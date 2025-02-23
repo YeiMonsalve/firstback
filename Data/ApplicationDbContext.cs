@@ -1,10 +1,9 @@
-using FIRSTBACK.Instituciones;
 using FIRSTBACK.Tematicas;
 using Microsoft.EntityFrameworkCore;
 using firstback.categorias;
 using firstback.user;
 
-namespace FIRSTBACK.Data
+namespace BackendProject.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -12,6 +11,5 @@ namespace FIRSTBACK.Data
         public DbSet<Tematica> Tematicas { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Institucion> Instituciones { get; set; }
     }
 }

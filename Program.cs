@@ -1,7 +1,5 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using FIRSTBACK.Data;
-using FIRSTBACK.Instituciones;
 using BackendProject.Data;
 using firstback.categorias;
 using firstback.user;
@@ -18,7 +16,6 @@ builder.Services.AddScoped<IUserService, UserService>(); //Servicio User
 // Registrar servicios
 builder.Services.AddScoped<ITematicaService, TematicaService>();
 builder.Services.AddScoped<ICategoriasService, CategoriasService>();
-builder.Services.AddScoped<IInstitucionService, InstitucionService>();
 
 // Configurar AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
