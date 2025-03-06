@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace firstback.categorias
@@ -37,6 +38,7 @@ namespace firstback.categorias
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> Create([FromBody] CategoriasDTO categoriaDTO)
         {
             int id = await _categoriasService.CreateAsync(categoriaDTO);
@@ -44,6 +46,7 @@ namespace firstback.categorias
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult> Update(int id, [FromBody] CategoriasDTO categoriaDTO)
         {
             var existingCategoria = await _categoriasService.GetByIDAsync(id);
@@ -59,6 +62,7 @@ namespace firstback.categorias
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult> Delete(int id)
         {
             var existingCategoria = await _categoriasService.GetByIDAsync(id);
