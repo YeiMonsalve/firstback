@@ -11,12 +11,13 @@ namespace Users_Opportunities.Sevices
         
         Task<UserOpportunity>CreateAsync(UsersOpportunityDTO usersOpportunityDTO);
 
-        Task<UserOpportunity>UpdateAsync(UsersOpportunityDTO usersOpportunitiesDTO);
+        Task<UserOpportunity>UpdateAsync(int Id, UsersOpportunityDTO usersOpportunitiesDTO);
 
-        Task DeleteAsync(UsersOpportunityDTO usersOpportunityDTO);
+        Task DeleteAsync(int id);
     }
 
     public interface IOportunity
     {
+        int userId { get; set; }
     }
 }

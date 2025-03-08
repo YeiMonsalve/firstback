@@ -53,5 +53,15 @@ namespace Users_Opportunities.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task<UserOpportunity> UpdateAsync(int Id, UsersOpportunityDTO usersOpportunitiesDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
