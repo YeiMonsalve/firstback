@@ -44,7 +44,14 @@ namespace Users_Opportunities.Services
             await _context.SaveChangesAsync();
         }
 
+        public Task<IOportunity?> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-
+        public Task<UserOpportunity> UpdateAsync(UsersOpportunityDTO usersOpportunitiesDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

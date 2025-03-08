@@ -4,14 +4,11 @@ using firstback.roles;
 using firstback.user;
 using FIRSTBACK.BootcampsTematicas;
 using FIRSTBACK.Instituciones;
+using FIRSTBACK.Oportunidades;
 using FIRSTBACK.Tematicas;
 using Microsoft.EntityFrameworkCore;
 using Users_Opportunities.Models;
-using firstback.roles;
-using firstback.categorias;
-using firstback.user;
-using firstback.bootcamps;
-using FIRSTBACK.BootcampsTematicas;
+
 
 namespace BackendProject.Data
 {
@@ -25,7 +22,7 @@ namespace BackendProject.Data
         public DbSet<Categorias> Categorias { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserOpportunity> UsersOpportunities { get; set; }
-
+        public DbSet<Oportunidad> Oportunidades { get; set; }
         public DbSet<Institucion> Instituciones { get; set; }
         public DbSet<Bootcamp> Bootcamps { get; set; }
         public DbSet<BootcampTematica> BootcampTematicas { get; set; }
@@ -35,14 +32,7 @@ namespace BackendProject.Data
             modelBuilder.Entity<UserOpportunity>()
                 .HasKey(uo => new { uo.userId, uo.opportunityId });
 
-          /*  modelBuilder.Entity<UserOpportunity>()
-                .HasOne(uo => uo.User)
-                .WithMany(uo => uo.userId)
-                .HasForeignKey(uo => uo.UserId)
-                .OnDelete(DeleteBehavior.Restrict); // Recomendado: Evita borrados en cascada
- // Recomendado: Evita borrados en cascada*/
-
-        {
+             
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Role)
                 .WithMany(r => r.Users);
@@ -53,8 +43,17 @@ namespace BackendProject.Data
 
             modelBuilder.Entity<BootcampTematica>()
             .HasKey(bt => new { bt.IdBootcamp, bt.IdTematica });
-        }
-    
+
+            modelBuilder.Entity<Oportunidad>()
+            .HasKey(o => o.id);
+
+            modelBuilder.Entity<Oportunidad>(entity => {
+                entity.HasKey(o => o.id);
+                entity.Property(o => o.nombre).HasMaxLength(255);
+                //entity.HasOne(o=> o.Institucion)
+            });
+
+
         }
     }
 }

@@ -1,6 +1,5 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BackendProject.Models;
+using firstback.user;
 using FIRSTBACK.Oportunidades;
 
 namespace Users_Opportunities.Models

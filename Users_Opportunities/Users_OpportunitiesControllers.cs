@@ -31,6 +31,19 @@ public class UsersOpportunitiesController : ControllerBase
         return CreatedAtAction(nameof(GetUsersOpportunities), new { userId = usersOpportunityDTO.UserId, opportunityId = usersOpportunityDTO.OpportunityId }, usersOpportunityDTO);
     }
 
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateAsync(int id, [FromBody] UsersOpportunityDTO usersOpportunityDTO)
+    {
+        var userOpportunity = await _userOpportunityService.GetByIdAsync(id);
+        if (userOpportunity == null)
+        {
+            return NotFound();
+            userOpportunity.UserId = Id;
+            await _userOpportunityService.UpdateAsync(id, usersOpportunityDTO);
+            return NoContent();
+        }
+    }
+
     
     [HttpDelete]
     public async Task<IActionResult> DeleteUserOpportunity(UsersOpportunityDTO usersOpportunityDTO)
