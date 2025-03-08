@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: NodoDB
+      POSTGRES_USER:  usuarionodo
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    container_name: firstback
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=NodoDB;Username= usuarionodo;Password=1234
+    ports:
+      - "8080:8080"
